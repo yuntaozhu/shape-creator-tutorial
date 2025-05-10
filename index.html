@@ -35,6 +35,18 @@
       transform: scale(1.1);
       transition: transform 0.2s, filter 0.2s;
     }
+    #instructions {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      /* border-radius: 10px; */
+      font-family: sans-serif;
+      font-size: 14px;
+      z-index: 30;
+    }
   </style>
 </head>
 <body>
@@ -42,6 +54,12 @@
   <canvas id="canvas"></canvas>
   <div id="three-canvas"></div>
   <img id="recycle-bin" src="recyclebin.png" alt="Recycle Bin" />
+  <div id="instructions">
+    Bring hands close and pinch to create a shape<br>
+    Move hands apart (while pinching) to make the shape larger<br>
+    Hover over a shape and pinch to move it<br>
+    Move a shape into the recycle bin to delete it
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
@@ -127,17 +145,12 @@
 
     const isPinch = (landmarks) => {
       const d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
-      return d(landmarks[4], landmarks[8]) < 0.07;
+      return d(landmarks[4], landmarks[8]) < 0.06;
     };
 
     const areIndexFingersClose = (l, r) => {
       const d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
       return d(l[8], r[8]) < 0.12;
-    };
-
-    const isFist = (landmarks) => {
-      const d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
-      return d(landmarks[4], landmarks[8]) < 0.05 && d(landmarks[4], landmarks[12]) < 0.07;
     };
 
     const findNearestShape = (position) => {
@@ -230,7 +243,7 @@
           const indexTip = landmarks[8];
           const position = get3DCoords(indexTip.x, indexTip.y);
 
-          if (isFist(landmarks)) {
+          if (isPinch(landmarks)) {
             if (!selectedShape) {
               selectedShape = findNearestShape(position);
             }
