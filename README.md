@@ -1,6 +1,6 @@
 # 3D Hand Tracking Demo [Shape Creator]
 
-A threejs / WebGL / MediaPipe-powered interactive demo that allows you to control create and move 3D shapes using hand gestures.
+A threejs / WebGL / MediaPipe-powered interactive demo that allows you to control create and move 3D shapes using hand gestures in real-time.
 
 <img src="demo.png">
 
@@ -8,19 +8,10 @@ A threejs / WebGL / MediaPipe-powered interactive demo that allows you to contro
 
 Try the live demo: [https://collidingscopes.github.io/shape-creator-tutorial/](https://collidingscopes.github.io/shape-creator-tutorial/)
 
-## Features
-
-- **Real-time hand tracking** using MediaPipe Hands
-- **Left hand gesture control:** Pinch thumb and index finger to resize the 3D sphere
-- **Right hand interaction:** Touch the sphere with your index finger to change its color
-- **Responsive design** that works on desktop and mobile browsers
-- **Visual feedback** with color-coded hand tracking
-
 ## Requirements
 
 - Modern web browser with WebGL support
 - Camera access
-- No additional software or downloads needed
 
 ## Technologies
 
@@ -72,6 +63,6 @@ You might also like some of my other open source projects:
 
 If you found this tool useful, feel free to buy me a coffee. 
 
-My name is Alan, and I enjoy building open source software for art, animation, games, and more. This would be much appreciated during late-night coding sessions!
+My name is Alan, and I enjoy building open source software for computer vision, games, and more. This would be much appreciated during late-night coding sessions!
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/stereoDrift)
